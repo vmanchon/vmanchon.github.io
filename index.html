@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New App</title>
+</head>
+<body>
+    <h1>New app</h1>
+    <input type="number" id="buttonCountInput" placeholder="Enter number of buttons" min="1">
+    <button onclick="updateButtons()">Generate Buttons</button>
+    <table id="buttonTable"></table>
+    <table id="fleurTable"></table>    
+    <div id="errorMessage" style="color: red;"></div>
+    <div id="calculator">
+        <div id="calcDisplay" style="margin-bottom: 10px; font-size: 20px; border: 1px solid #ccc; padding: 10px;">0</div>
+        <div id="calcButtons" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px;"></div>
+        <button onclick="resetCalculator()" style="margin-top: 10px; background-color: red; color: white;">Reset</button>
+        <div id="calcSummary" style="margin-bottom: 10px; font-size: 20px; border: 1px solid #ccc; padding: 10px;">Summary</div>
+        <div id="calcResult" style="margin-bottom: 10px; font-size: 20px; border: 1px solid #ccc; padding: 10px;">-</div>
+    </div>
+    <script src="javascript.js"></script>
+</body>
+</html>
