@@ -98,9 +98,12 @@ async function fetchAndGenerateButtons() {
 function createCalculator() {
     const calcButtons = [
         { text: 'Jaune', value: '1', color: 'yellow' },
-        { text: 'Bleu', value: '1.5', color: 'blue' },
-        { text: 'Rose', value: '2', color: 'pink' },
-        { text: 'Marron', value: '2.5', color: 'brown' },                
+        { text: 'Marron', value: '1.5', color: 'brown' },
+        { text: 'Rose', value: '2.5', color: 'pink' },
+        { text: 'Orange', value: '3', color: 'orange' },                
+        { text: 'Noir', value: '5.5', color: 'black' },              
+        { text: 'Bleu', value: '3', color: 'blue' },                  
+        { text: 'Blanc', value: '3', color: 'white' },                  
         { text: '=', value: '=', color: '#90ee90' }        
     ];
 
@@ -108,6 +111,8 @@ function createCalculator() {
     const calcDisplay = document.getElementById('calcDisplay');
     const calcSummary = document.getElementById('calcSummary');
     const calcResult = document.getElementById('calcResult');
+    const calcHistory = document.getElementById('calcHistory');
+
     let currentExpressionValue = '';
     let currentExpressionText = '';
     let result = '00';
@@ -121,8 +126,12 @@ function createCalculator() {
             if (button.value === '=') {
                 try {
                     currentExpressionValue = currentExpressionValue.substring(0, currentExpressionValue.length - 1);
-                    currentExpressionValue = eval(currentExpressionValue).toString();                    
+                    result = eval(currentExpressionValue).toString();
+                    const historyItem = document.createElement('li');
+                    historyItem.textContent = `${currentExpressionText} = ${result}`;
+                    calcHistory.appendChild(historyItem);
                     currentExpressionValue = '';
+                    currentExpressionText = '';
                 } catch {
                     currentExpressionValue = 'Error';
                 }
