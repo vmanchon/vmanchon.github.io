@@ -102,8 +102,8 @@ function createCalculator() {
         { text: 'Rose', value: '2.5', color: 'pink' },
         { text: 'Orange', value: '3', color: 'orange' },                
         { text: 'Noir', value: '5.5', color: 'black' },              
-        { text: 'Bleu', value: '3', color: 'blue' },                  
-        { text: 'Blanc', value: '3', color: 'white' },                  
+        { text: 'Bleu', value: '10', color: 'blue' },                  
+        { text: 'Blanc', value: '13', color: 'white' },                  
         { text: '=', value: '=', color: '#90ee90' }        
     ];
 
