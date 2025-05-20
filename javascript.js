@@ -103,7 +103,7 @@ function createCalculator() {
         { text: 'Orange', value: '3', color: 'orange' },                
         { text: 'Noir', value: '5.5', color: 'black' },              
         { text: 'Bleu', value: '10', color: 'blue' },                  
-        { text: 'Blanc', value: '13', color: 'white' },                  
+        { text: 'Blanc', value: '13', color: 'white' },        
         { text: '=', value: '=', color: '#90ee90' }        
     ];
 
@@ -148,6 +148,35 @@ function createCalculator() {
         };
         calcButtonsContainer.appendChild(btn);
     });
+}
+
+function downloadCSV(){
+    
+    const rows = calcHistory.querySelectorAll('li');
+    let csvContent = 'data:text/csv;charset=utf-8,';
+    var rowTitle = `Jaune,Marron,Rose,Orange,Noir,Bleu,Blanc,Total,Montant\n`;
+    csvContent += rowTitle;
+    rows.forEach(row => {
+        var jaune = (row.textContent.match(/Jaune/g) || []).length;
+        var marron = (row.textContent.match(/Marron/g) || []).length;
+        var rose = (row.textContent.match(/Rose/g) || []).length;
+        var orange = (row.textContent.match(/Orange/g) || []).length;
+        var noir = (row.textContent.match(/Noir/g) || []).length;
+        var bleu = (row.textContent.match(/Bleu/g) || []).length;
+        var blanc = (row.textContent.match(/Blanc/g) || []).length;
+        var total = jaune + marron + rose + orange + noir + bleu + blanc;
+        var totalPrice = (jaune * 1) + (marron * 1.5) + (rose * 2.5) + (orange * 3) + (noir * 5.5) + (bleu * 10) + (blanc * 13);
+        var rowData = `${jaune},${marron},${rose},${orange},${noir},${bleu},${blanc},${total},${totalPrice}`;
+        csvContent += rowData + '\n';
+    });
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'calculator_history.csv');
+    document.body.appendChild(link);
+    link.click();
+
+    console.error(calcHistory.textContent);
 }
 
 function resetCalculator() {
